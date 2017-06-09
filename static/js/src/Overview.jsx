@@ -45,6 +45,24 @@ export default class Overview extends React.Component {
             )
         })
 
+        let category
+        switch (this.state.slide) {
+            case 0:
+                category = "___bestuur"
+                break
+            case 1:
+                category = "___veiligheid"
+                break
+            case 2:
+                category = "___verkeer"
+                break
+            case 3:
+                category = "___economie"
+                break
+            default:
+                category = "___bestuur"
+        }
+
         return (
             <div className="page">
                 <div className={classnames({"page__prev": true, " ___is-hidden":this.state.slide === 0})} onClick={(e) => this.gotoSlide(this.state.slide - 1)}>
@@ -59,7 +77,7 @@ export default class Overview extends React.Component {
                         <polygon fill="#3A4F4F" points="24.17,19 18.58,13.41 20,12 28,20 20,28 18.59,26.59 24.17,21 12,21 12,19 "></polygon>
                     </svg>
                 </div>
-                <div className="categories ___bestuur" style={{height:"100%", width:"900%", transform:this.state.transform}}>
+                <div className={classnames({"categories": true, [category]: true})} style={{height:"100%", width:"900%", transform:this.state.transform}}>
                     {items}
                 </div>
                 <nav className="nav">

@@ -14,11 +14,11 @@ const digitFormatter = new Intl.NumberFormat("nl-NL", {
 })
 
 const units = {
-    huizen: { name: "Huizen", fraction: 250000 },
+    null: { name: "Euro's", fraction: 1 },
     boeing: { name: "Boeing 747's", fraction: 180000000 },
-    null: { name: "Geld", fraction: 1 },
+    huizen: { name: "Huizen", fraction: 250000 },
     koeien: { name: "Koeien", fraction: 1000 },
-    koffie: { name: "Kopjes koffie", fraction: 2.5 }
+    koffie: { name: "Bakkies koffie", fraction: 2.5 }
 }
 
 export default class Category extends React.Component {
@@ -62,7 +62,7 @@ export default class Category extends React.Component {
                     <div className="category__counter">
                         <div className="counter">
                             <div>
-                                <h1>{digitFormatter.format(data.bedrag / units[this.state.unit].fraction )} ✈</h1>
+                                <h1>{digitFormatter.format(data.bedrag / units[this.state.unit].fraction )} ✈️</h1>
                             </div>
                         </div>
                     </div>
@@ -84,7 +84,18 @@ export default class Category extends React.Component {
                     <div className="category__counter">
                         <div className="counter">
                             <div>
-                                <h1>{digitFormatter.format(current / units[this.state.unit].fraction )} 🐄</h1>
+                                <h1 onClick={(e) => this.toggle("kamelen")}>{digitFormatter.format(current / units[this.state.unit].fraction )} 🐄</h1>
+                            </div>
+                        </div>
+                    </div>
+                )
+                break
+            case "kamelen":
+                content = (
+                    <div className="category__counter">
+                        <div className="counter">
+                            <div>
+                                <h1>{digitFormatter.format(current / 1500 )} 🐫</h1>
                             </div>
                         </div>
                     </div>
@@ -120,7 +131,7 @@ export default class Category extends React.Component {
         }
 
         let selected
-        if (this.state.unit) {
+        if (this.state.unit && units[this.state.unit]) {
             selected = (
                 <div className={classnames({"units__unit":true, "___is-selected": true})} onClick={(e) => this.toggle(this.state.unit)}>{units[this.state.unit].name}</div>
             )
