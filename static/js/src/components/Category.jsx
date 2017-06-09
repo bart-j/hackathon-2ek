@@ -59,55 +59,85 @@ export default class Category extends React.Component {
         switch (this.state.unit) {
             case "boeing":
                 content = (
-                    <div className="category__graphic">
-                        <div>
-                            <h1>{digitFormatter.format(current / units[this.state.unit].fraction )} ✈️</h1>
-                            <h2>{digitFormatter.format(data.bedrag / units[this.state.unit].fraction )} ✈</h2>
-                            <h3>voor heel 2017<br />en {digitFormatter.format(data.bedrag / units[this.state.unit].fraction / inwoners)} per inwoner</h3>
+                    <div className="category__counter">
+                        <div className="counter">
+                            <div>
+                                <h1>{digitFormatter.format(current / units[this.state.unit].fraction )} ✈️</h1>
+                                <div className="counter__sub">
+                                    <div>
+                                        <h2>{digitFormatter.format(data.bedrag / units[this.state.unit].fraction )} ✈</h2>
+                                        <h3>voor heel 2017<br />en {digitFormatter.format(data.bedrag / units[this.state.unit].fraction / inwoners)} per inwoner</h3>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 )
                 break
             case "huizen":
                 content = (
-                    <div className="category__graphic">
-                        <div>
-                            <h1>{digitFormatter.format(current / units[this.state.unit].fraction )} 🏠</h1>
-                            <h2>{digitFormatter.format(data.bedrag / units[this.state.unit].fraction )} 🏠</h2>
-                            <h3>voor heel 2017<br />en {digitFormatter.format(data.bedrag / units[this.state.unit].fraction / inwoners)} per inwoner</h3>
+                    <div className="category__counter">
+                        <div className="counter">
+                            <div>
+                                <h1>{digitFormatter.format(current / units[this.state.unit].fraction )} 🏠</h1>
+                                <div className="counter__sub">
+                                    <div>
+                                        <h2>{digitFormatter.format(data.bedrag / units[this.state.unit].fraction )} 🏠</h2>
+                                        <h3>voor heel 2017<br />en {digitFormatter.format(data.bedrag / units[this.state.unit].fraction / inwoners)} per inwoner</h3>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 )
                 break
             case "koeien":
                 content = (
-                    <div className="category__graphic">
-                        <div>
-                            <h1>{digitFormatter.format(current / units[this.state.unit].fraction )} 🐄</h1>
-                            <h2>{digitFormatter.format(data.bedrag / units[this.state.unit].fraction )} 🐄</h2>
-                            <h3>voor heel 2017<br />en {digitFormatter.format(data.bedrag / units[this.state.unit].fraction / inwoners)} per inwoner</h3>
+                    <div className="category__counter">
+                        <div className="counter">
+                            <div>
+                                <h1>{digitFormatter.format(current / units[this.state.unit].fraction )} 🐄</h1>
+                                <div className="counter__sub">
+                                    <div>
+                                        <h2>{digitFormatter.format(data.bedrag / units[this.state.unit].fraction )} 🐄</h2>
+                                        <h3>voor heel 2017<br />en {digitFormatter.format(data.bedrag / units[this.state.unit].fraction / inwoners)} per inwoner</h3>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 )
                 break
             case "koffie":
                 content = (
-                    <div className="category__graphic">
-                        <div>
-                            <h1>{digitFormatter.format(current / units[this.state.unit].fraction )} ☕</h1>
-                            <h2>{digitFormatter.format(data.bedrag / units[this.state.unit].fraction )} ☕</h2>
-                            <h3>voor heel 2017<br />en {digitFormatter.format(data.bedrag / units[this.state.unit].fraction / inwoners)} per inwoner</h3>
+                    <div className="category__counter">
+                        <div className="counter">
+                            <div>
+                                <h1>{digitFormatter.format(current / units[this.state.unit].fraction )} ☕</h1>
+                                <div className="counter__sub">
+                                    <div>
+                                        <h2>{digitFormatter.format(data.bedrag / units[this.state.unit].fraction )} ☕</h2>
+                                        <h3>voor heel 2017<br />en {digitFormatter.format(data.bedrag / units[this.state.unit].fraction / inwoners)} per inwoner</h3>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 )
                 break
             default:
                 content = (
-                    <div className="category__graphic">
-                        <div>
-                            <h1>{currencyFormatter.format(current)}</h1>
-                            <h2>{currencyFormatter.format(data.bedrag)}</h2>
-                            <h3>voor heel 2017<br />en {currencyFormatter.format(data.bedrag / inwoners)} per inwoner</h3>
+                    <div className="category__counter">
+                        <div className="counter">
+                            <div>
+                                <h1>{currencyFormatter.format(current)}</h1>
+                                <div className="counter__sub">
+                                    <div>
+                                        <h2>{currencyFormatter.format(data.bedrag)}</h2>
+                                        <h3>voor heel 2017<br />en {currencyFormatter.format(data.bedrag / inwoners)} per inwoner</h3>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 )
@@ -134,12 +164,16 @@ export default class Category extends React.Component {
         return (
             <div className={classnames({"category": true, "___is-active": this.props.isActive})}>
                 <div className="category__info">
-                    <h2>{data.gemeente}</h2>
+                    <div className="category__town">
+                        <svg fill="#000000" height="24" viewbox="0 0 24 24" width="24">
+                            <path d="M15 11V5l-3-3-3 3v2H3v14h18V11h-6zm-8 8H5v-2h2v2zm0-4H5v-2h2v2zm0-4H5V9h2v2zm6 8h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2V9h2v2zm0-4h-2V5h2v2zm6 12h-2v-2h2v2zm0-4h-2v-2h2v2z"></path>
+                        </svg>
+                        <h2>{data.gemeente}</h2>
+                    </div>
                     <h1>{data.post}</h1>
                     <p>{uitleg[data.post]}</p>
-
-                    {content}
                 </div>
+                {content}
                 <div className="category__units">
                     Hoeveel is dat in&nbsp;<div className="units">
                         {selected}
