@@ -19,10 +19,10 @@ export default class Index extends React.Component {
     render() {
         return (
             <div className="search" style={{visibility:"visible"}}>
-                <h1>Vul je gemeente in.</h1>
+                <h1><span>🏡</span>Vul je gemeente in!</h1>
                 <div className={classnames({"input": true, "___filled-in": this.state.q})}>
                     <form method="GET" action="/overview">
-                        <input type="text" name="q" placeholder="Loppersum" onChange={this.onChange} autoFocus autoComplete="off" value={this.state.q} />
+                        <input type="text" name="q" placeholder="bijv. Loppersum" onChange={this.onChange} autoFocus autoComplete="off" value={this.state.q} />
                         <label>en druk op<kbd>Enter</kbd></label>
                     </form>
                 </div>
