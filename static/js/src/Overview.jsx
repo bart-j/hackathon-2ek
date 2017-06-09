@@ -59,6 +59,18 @@ export default class Overview extends React.Component {
             case 3:
                 category = "___economie"
                 break
+            case 4:
+                category = "___bestuur"
+                break
+            case 5:
+                category = "___veiligheid"
+                break
+            case 6:
+                category = "___verkeer"
+                break
+            case 7:
+                category = "___economie"
+                break
             default:
                 category = "___bestuur"
         }
